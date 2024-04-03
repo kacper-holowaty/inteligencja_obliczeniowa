@@ -21,7 +21,7 @@ components_to_keep = np.argmax(res >= 0.95) + 1
 print("Liczba komponentów, które należy zachować: ", components_to_keep)
 
 
-def wykres_3d(X, y):
+def wykres_3d(dane, y):
     np.random.seed(5)
     fig = plt.figure(1, figsize=(4, 3))
     plt.clf()
@@ -31,8 +31,8 @@ def wykres_3d(X, y):
 
 
     plt.cla()
-    pca_iris = PCA(n_components=3).fit(X)
-    X = pca_iris.transform(X)
+    pca_iris = PCA(n_components=3).fit(dane)
+    X = pca_iris.transform(dane)
 
     for name, label in [("Setosa", 0), ("Versicolour", 1), ("Virginica", 2)]:
         ax.text3D(
@@ -54,9 +54,9 @@ def wykres_3d(X, y):
 
 # wykres 2D 
 
-def wykres_2d(X, y):
+def wykres_2d(dane, y):
     pca = PCA(n_components=2)
-    X_r = pca.fit(X).transform(X)
+    x_r = pca.fit(dane).transform(dane)
 
 
     plt.figure()
@@ -65,7 +65,7 @@ def wykres_2d(X, y):
 
     for color, i, target_name in zip(colors, [0, 1, 2], iris.target_names):
         plt.scatter(
-            X_r[y == i, 0], X_r[y == i, 1], color=color, alpha=0.8, lw=lw, label=target_name
+            x_r[y == i, 0], x_r[y == i, 1], color=color, alpha=0.8, lw=lw, label=target_name
         )
     plt.legend(loc="best", shadow=False, scatterpoints=1)
     plt.title("PCA of IRIS dataset")
