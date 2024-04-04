@@ -23,6 +23,5 @@ for i in range(len):
     if classify_iris(test_set[i][0], test_set[i][1], test_set[i][2], test_set[i][3]) == test_set[i][4]:
         good_predictions = good_predictions + 1
 
-# print(train_set)
 print(good_predictions)
 print(good_predictions/len*100, "%")
