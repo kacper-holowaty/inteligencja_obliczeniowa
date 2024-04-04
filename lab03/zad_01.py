@@ -8,11 +8,6 @@ df = pd.read_csv("iris1.csv")
 # podzial na zbior testowy (30%) i treningowy (70%), ziarno losowosci = 13 
 (train_set, test_set) = train_test_split(df.values, train_size=0.7,random_state=13) # gdy random_state=17, wtedy skuteczność 100% :) 
 
-rain_inputs = train_set[:, 0:4] 
-train_classes = train_set[:, 4] 
-test_inputs = test_set[:, 0:4] 
-test_classes = test_set[:, 4] 
-
 def classify_iris(sl, sw, pl, pw):
     if sl > 4 and sl <= 5.7 and sw >= 3 and pl < 2 and pw < 1:
         return("Setosa")
