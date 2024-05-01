@@ -13,15 +13,12 @@ df_norm = data.drop('class', axis=1).apply(lambda x: (x - x.min()) / (x.max() - 
 target = data[['class']].replace(['tested_negative', 'tested_positive'], [0,1])
 df = pd.concat([df_norm, target], axis=1)
 
-# trainX, testX, trainY, testY = train_test_split(df, train_size=0.7, random_state=40)
 (train_set, test_set) = train_test_split(df, train_size=0.7, random_state=1)
 
-# trainX = train_set[['pregnant-times','glucose-concentr','blood-pressure','skin-thickness','insulin','mass-index','pedigree-func','age']]
 trainX = train_set.drop('class', axis=1)
 trainY = train_set['class']
 testX = test_set.drop('class', axis=1)
 testY = test_set['class']
-
 
 clf = MLPClassifier(hidden_layer_sizes=(6, 3), activation='relu', max_iter=500, random_state=1)
 clf.fit(trainX, trainY)
